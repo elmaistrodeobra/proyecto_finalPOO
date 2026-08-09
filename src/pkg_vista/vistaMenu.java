@@ -18,6 +18,12 @@ public class vistaMenu extends javax.swing.JFrame {
     public vistaMenu() {
         initComponents();
     }
+    public javax.swing.JButton getBtnNuevaCita() { return btnNuevaCita; }
+    public javax.swing.JButton getBtnNuevoMedico() { return btnNuevoMedico; }
+    public javax.swing.JButton getBtnNuevoPaciente() { return btnNuevoPaciente; }
+    public javax.swing.JButton getBtnVerCitas() { return btnVerCitas; }
+    public javax.swing.JButton getBtnVerMedicos() { return btnVerMedicos; }
+    public javax.swing.JButton getBtnVerPacientes() { return btnVerPacientes; }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,17 +34,74 @@ public class vistaMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        btnNuevaCita = new javax.swing.JButton();
+        btnNuevoMedico = new javax.swing.JButton();
+        btnNuevoPaciente = new javax.swing.JButton();
+        btnVerCitas = new javax.swing.JButton();
+        btnVerMedicos = new javax.swing.JButton();
+        btnVerPacientes = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel1.setText("Sistema del hospital");
+
+        btnNuevaCita.setText("Agendar nueva cita");
+
+        btnNuevoMedico.setText("Registrar nuevo medico");
+
+        btnNuevoPaciente.setText("Registrar nuevo paciente");
+
+        btnVerCitas.setText("Historial de citas");
+
+        btnVerMedicos.setText("Lista de medicos");
+
+        btnVerPacientes.setText("Lista de pacinetes");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(270, 270, 270)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNuevaCita)
+                    .addComponent(btnVerCitas))
+                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNuevoMedico)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnVerMedicos)
+                        .addGap(20, 20, 20)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNuevoPaciente)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(btnVerPacientes)))
+                .addGap(123, 123, 123))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNuevaCita)
+                    .addComponent(btnNuevoMedico)
+                    .addComponent(btnNuevoPaciente))
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVerCitas)
+                    .addComponent(btnVerMedicos)
+                    .addComponent(btnVerPacientes))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();
@@ -70,5 +133,12 @@ public class vistaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnNuevaCita;
+    public javax.swing.JButton btnNuevoMedico;
+    public javax.swing.JButton btnNuevoPaciente;
+    public javax.swing.JButton btnVerCitas;
+    public javax.swing.JButton btnVerMedicos;
+    public javax.swing.JButton btnVerPacientes;
+    public javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
