@@ -18,6 +18,12 @@ public class Paciente extends Persona {
     this.tipoSangre = ts;
 }
     
+    public Paciente(int i, String n, String a, int e, String t) {
+        super(i, n, a, e, t);
+        this.alergias = "No registrado";
+        this.tipoSangre = "No registrado";
+    }
+    
     @Override
     public String toString() {
         return nombre + " " + apellido + " " + alergias + " " + tipoSangre;

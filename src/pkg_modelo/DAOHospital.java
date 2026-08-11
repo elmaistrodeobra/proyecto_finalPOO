@@ -133,4 +133,77 @@ public class DAOHospital {
             return false;
         }
     }
-}
+    
+    public boolean verificarHorarioOcupado(int id_medico, String fecha, String hora) throws SQLException {
+        String sql = "SELECT * FROM CitaMedica WHERE id_medico = ? AND fecha = ? AND hora = ?";
+        try (Connection con = DriverManager.getConnection(URL, USER, PASS);
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, id_medico);
+            ps.setString(2, fecha);
+            ps.setString(3, hora);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+        }
+    }
+    
+    public void insertarCita(Cita cita) throws SQLException {
+        String sql = "INSERT INTO CitaMedica (id_paciente, id_medico, fecha, hora, diagnostico) VALUES (?, ?, ?, ?, ?)";
+        try (Connection con = DriverManager.getConnection(URL, USER, PASS);
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, cita.getPaciente().getId()); 
+            ps.setInt(2, cita.getMedico().getId());   
+            ps.setString(3, cita.getFecha());
+            ps.setString(4, cita.getHora());
+            ps.setString(5, cita.getDiagnostico());
+            ps.executeUpdate();
+        }
+    }
+    
+    public ArrayList<Cita> obtenerTodasLasCitas() throws SQLException {
+        ArrayList<Cita> lista = new ArrayList<>();
+        String sql = "SELECT c.id_cita, c.fecha, c.hora, c.diagnostico, "
+                   + "p.id_paciente, p.nombre AS p_nom, p.apellido AS p_ape, p.telefono AS p_tel, "
+                   + "m.id_medico, m.nombre AS m_nom, m.apellido AS m_ape, m.telefono AS m_tel, m.cedula, m.especialidad, m.horario "
+                   + "FROM citamedica c "
+                   + "INNER JOIN paciente p ON c.id_paciente = p.id_paciente "
+                   + "INNER JOIN medico m ON c.id_medico = m.id_medico";
+        try (Connection con = DriverManager.getConnection(URL, USER, PASS);
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Paciente pac = new Paciente(
+                    rs.getInt("id_paciente"),
+                    rs.getString("p_nom"),
+                    rs.getString("p_ape"),
+                    0,
+                    rs.getString("p_tel")
+                );
+                Medico med = new Medico(
+                    rs.getInt("id_medico"),
+                    rs.getString("m_nom"),
+                    rs.getString("m_ape"),
+                    0,
+                    rs.getString("m_tel"),
+                    rs.getString("cedula"),
+                    rs.getString("especialidad"),
+                    rs.getString("horario")
+                );
+                lista.add(new Cita(rs.getInt("id_cita"), pac, med, rs.getString("fecha"), rs.getString("hora"), rs.getString("diagnostico")));
+            }
+        }
+        return lista;
+    }
+    
+    public boolean actualizarDiagnostico(int idCita, String diagnostico) throws SQLException {
+        String sql = "UPDATE CitaMedica SET diagnostico = ? WHERE id_cita = ?";
+        try (Connection con = DriverManager.getConnection(URL, USER, PASS);
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, diagnostico);
+            ps.setInt(2, idCita);
+            return ps.executeUpdate() > 0;
+        }
+    }
+} 
+    
+
