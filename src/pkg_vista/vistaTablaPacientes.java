@@ -18,7 +18,8 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
     public vistaTablaPacientes() {
         initComponents();
     }
-
+    public javax.swing.JTable getTblPacientes() { return tblPacientes; }
+    public javax.swing.JButton getBtnVolver() { return btnVolver; }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,17 +29,66 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblListaPacientes = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPacientes = new javax.swing.JTable();
+        btnVolver = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblListaPacientes.setFont(new java.awt.Font("DynaPuff SemiCondensed SemiBold", 0, 24)); // NOI18N
+        lblListaPacientes.setForeground(new java.awt.Color(0, 0, 102));
+        lblListaPacientes.setText("Lista de Pacientes");
+
+        jScrollPane1.setBackground(new java.awt.Color(226, 233, 249));
+        jScrollPane1.setForeground(new java.awt.Color(0, 51, 102));
+
+        tblPacientes.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
+        tblPacientes.setForeground(new java.awt.Color(0, 51, 102));
+        tblPacientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Apellido", "Edad", "Telefono", "Alergias", "TipoDeSangre"
+            }
+        ));
+        jScrollPane1.setViewportView(tblPacientes);
+
+        btnVolver.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(0, 0, 102));
+        btnVolver.setText("Volver al Menú");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(270, 270, 270)
+                        .addComponent(btnVolver))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(lblListaPacientes)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(lblListaPacientes)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnVolver)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
@@ -70,5 +120,9 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnVolver;
+    public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JLabel lblListaPacientes;
+    private javax.swing.JTable tblPacientes;
     // End of variables declaration//GEN-END:variables
 }

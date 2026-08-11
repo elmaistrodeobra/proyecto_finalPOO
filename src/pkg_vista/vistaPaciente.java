@@ -18,6 +18,14 @@ public class vistaPaciente extends javax.swing.JFrame {
     public vistaPaciente() {
         initComponents();
     }
+    public javax.swing.JTextField getTxtNombre() { return txtNombre; }
+    public javax.swing.JTextField getTxtApellido() { return txtApellido; }
+    public javax.swing.JTextField getTxtEdad() { return txtEdad; }
+    public javax.swing.JTextField getTxtTelefono() { return txtTelefono; }
+    public javax.swing.JTextField getTxtAlergias() { return txtAlergias; }
+    public javax.swing.JTextField getTxtSangre() { return txtSangre; }
+    public javax.swing.JButton getBtnGuardarpaciente() { return btnGuardarpaciente; }
+    public javax.swing.JButton getBtnVolver() { return btnVolver; }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,21 +36,175 @@ public class vistaPaciente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblPaciente = new javax.swing.JLabel();
+        lblInserteDatos = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblApellido = new javax.swing.JLabel();
+        lblEdad = new javax.swing.JLabel();
+        lblTelefono = new javax.swing.JLabel();
+        lblTipoSangre = new javax.swing.JLabel();
+        lblAlergias = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
+        txtSangre = new javax.swing.JTextField();
+        txtAlergias = new javax.swing.JTextField();
+        btnGuardarpaciente = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblPaciente.setFont(new java.awt.Font("DynaPuff Condensed SemiBold", 0, 48)); // NOI18N
+        lblPaciente.setForeground(new java.awt.Color(51, 0, 153));
+        lblPaciente.setText("¡Paciente!");
+
+        lblInserteDatos.setFont(new java.awt.Font("DynaPuff Condensed", 0, 14)); // NOI18N
+        lblInserteDatos.setForeground(new java.awt.Color(0, 102, 153));
+        lblInserteDatos.setText("Por favor, inserte los datos del paciente:");
+
+        lblNombre.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(0, 0, 102));
+        lblNombre.setText("Nombre:");
+
+        lblApellido.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
+        lblApellido.setForeground(new java.awt.Color(0, 0, 102));
+        lblApellido.setText("Apellido:");
+
+        lblEdad.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
+        lblEdad.setForeground(new java.awt.Color(0, 0, 102));
+        lblEdad.setText("Edad:");
+
+        lblTelefono.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
+        lblTelefono.setForeground(new java.awt.Color(0, 0, 102));
+        lblTelefono.setText("Telefono:");
+
+        lblTipoSangre.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
+        lblTipoSangre.setForeground(new java.awt.Color(0, 0, 102));
+        lblTipoSangre.setText("Tipo de sangre:");
+
+        lblAlergias.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
+        lblAlergias.setForeground(new java.awt.Color(0, 0, 102));
+        lblAlergias.setText("Alergias:");
+
+        txtSangre.addActionListener(this::txtSangreActionPerformed);
+
+        txtAlergias.addActionListener(this::txtAlergiasActionPerformed);
+
+        btnGuardarpaciente.setBackground(new java.awt.Color(224, 226, 246));
+        btnGuardarpaciente.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
+        btnGuardarpaciente.setForeground(new java.awt.Color(0, 51, 102));
+        btnGuardarpaciente.setText("Guardar");
+        btnGuardarpaciente.addActionListener(this::btnGuardarpacienteActionPerformed);
+
+        btnVolver.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(this::btnVolverActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblNombre)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblApellido)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(8, 8, 8)
+                                                .addComponent(lblEdad)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtEdad))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblTelefono)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblAlergias)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtAlergias))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblTipoSangre)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtSangre, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addComponent(btnGuardarpaciente))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addComponent(lblPaciente)))
+                .addGap(22, 22, 22))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(lblInserteDatos)
+                .addGap(154, 154, 154))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblPaciente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblInserteDatos)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombre)
+                    .addComponent(lblEdad)
+                    .addComponent(lblTipoSangre)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSangre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAlergias)
+                    .addComponent(lblTelefono)
+                    .addComponent(lblApellido)
+                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAlergias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(btnGuardarpaciente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtSangreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSangreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSangreActionPerformed
+
+    private void txtAlergiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlergiasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAlergiasActionPerformed
+
+    private void btnGuardarpacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarpacienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarpacienteActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +232,21 @@ public class vistaPaciente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnGuardarpaciente;
+    public javax.swing.JButton btnVolver;
+    public javax.swing.JLabel lblAlergias;
+    public javax.swing.JLabel lblApellido;
+    public javax.swing.JLabel lblEdad;
+    public javax.swing.JLabel lblInserteDatos;
+    public javax.swing.JLabel lblNombre;
+    public javax.swing.JLabel lblPaciente;
+    public javax.swing.JLabel lblTelefono;
+    public javax.swing.JLabel lblTipoSangre;
+    public javax.swing.JTextField txtAlergias;
+    public javax.swing.JTextField txtApellido;
+    public javax.swing.JTextField txtEdad;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtSangre;
+    public javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
