@@ -12,9 +12,11 @@ public class Paciente extends Persona {
     protected String alergias;
     protected String tipoSangre;
     
-    public Paciente(int i, String n, String a, int e, String t) {
-        super(i, n, a, e, t);
-    }
+    public Paciente(int i, String n, String a, int e, String t, String al, String ts) {
+    super(i, n, a, e, t);
+    this.alergias = al;
+    this.tipoSangre = ts;
+}
     
     @Override
     public String toString() {
