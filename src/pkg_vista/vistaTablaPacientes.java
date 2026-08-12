@@ -4,6 +4,8 @@
  */
 package pkg_vista;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author uli08
@@ -19,7 +21,10 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
         initComponents();
     }
     public javax.swing.JTable getTblPacientes() { return tblPacientes; }
-    public javax.swing.JButton getBtnVolver() { return btnVolver; }
+    public javax.swing.JButton getBtnVolver() { return btnEliminarPa; }
+    public javax.swing.JButton getBtnActualizarPa() { return btnActualizarPa; }
+    public javax.swing.JButton getBtnEliminarPa() {return btnEliminarPa;}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +37,9 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
         lblListaPacientes = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPacientes = new javax.swing.JTable();
-        btnVolver = new javax.swing.JButton();
+        btnEliminarPa = new javax.swing.JButton();
+        btnVolver1 = new javax.swing.JButton();
+        btnActualizarPa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,9 +65,18 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblPacientes);
 
-        btnVolver.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
-        btnVolver.setForeground(new java.awt.Color(0, 0, 102));
-        btnVolver.setText("Volver al Menú");
+        btnEliminarPa.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
+        btnEliminarPa.setForeground(new java.awt.Color(0, 0, 102));
+        btnEliminarPa.setText("Eliminar");
+
+        btnVolver1.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
+        btnVolver1.setForeground(new java.awt.Color(0, 0, 102));
+        btnVolver1.setText("Volver al Menú");
+
+        btnActualizarPa.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
+        btnActualizarPa.setForeground(new java.awt.Color(0, 0, 102));
+        btnActualizarPa.setText("Actualizar");
+        btnActualizarPa.addActionListener(this::btnActualizarPaActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,12 +88,18 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(270, 270, 270)
-                        .addComponent(btnVolver))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(224, 224, 224)
-                        .addComponent(lblListaPacientes)))
+                        .addComponent(lblListaPacientes))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(265, 265, 265)
+                        .addComponent(btnVolver1)))
                 .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEliminarPa)
+                .addGap(30, 30, 30)
+                .addComponent(btnActualizarPa)
+                .addGap(226, 226, 226))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,13 +108,21 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
                 .addComponent(lblListaPacientes)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnVolver)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEliminarPa)
+                    .addComponent(btnActualizarPa))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(btnVolver1)
+                .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnActualizarPaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarPaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarPaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,7 +150,9 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnVolver;
+    public javax.swing.JButton btnActualizarPa;
+    public javax.swing.JButton btnEliminarPa;
+    public javax.swing.JButton btnVolver1;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel lblListaPacientes;
     private javax.swing.JTable tblPacientes;
