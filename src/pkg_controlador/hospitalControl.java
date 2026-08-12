@@ -360,6 +360,7 @@ public class hospitalControl implements ActionListener {
     }
 
     private void actualizarPaciente() {
+          
         try {
             int fila = vTablaPacientes.getTblPacientes().getSelectedRow();
             if (fila < 0) {
