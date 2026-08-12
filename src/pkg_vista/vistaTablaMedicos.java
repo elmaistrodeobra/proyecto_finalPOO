@@ -4,6 +4,8 @@
  */
 package pkg_vista;
 
+import javax.swing.JTable;
+
 /**
  *
  * @author uli08
@@ -18,6 +20,8 @@ public class vistaTablaMedicos extends javax.swing.JFrame {
     public vistaTablaMedicos() {
         initComponents();
     }
+
+    public javax.swing.JTable getTblMedicos() {return tblMedicos;}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -128,7 +132,7 @@ public class vistaTablaMedicos extends javax.swing.JFrame {
     public javax.swing.JButton btnVolver;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblMedicos;
+    public javax.swing.JTable tblMedicos;
     // End of variables declaration//GEN-END:variables
 public javax.swing.JButton getBtnVolver() {
     return btnVolver;
