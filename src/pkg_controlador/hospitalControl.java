@@ -100,7 +100,6 @@ public class hospitalControl implements ActionListener {
                 vTablaPacientes.getBtnVolver().addActionListener(this);
 
                 vTablaPacientes.getBtnEliminarPa().addActionListener(evt -> eliminarPaciente());
-                vTablaPacientes.getBtnActualizarPa().addActionListener(evt -> actualizarPaciente());
                 vTablaPacientes.getTblPacientes().getSelectionModel().addListSelectionListener(evt -> seleccionarPaciente());
             }
             llenarTablaPacientes();
@@ -356,56 +355,6 @@ public class hospitalControl implements ActionListener {
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(vTablaPacientes, "Error al eliminar: " + ex.getMessage());
-        }
-    }
-
-    private void actualizarPaciente() {
-          
-        try {
-            int fila = vTablaPacientes.getTblPacientes().getSelectedRow();
-            if (fila < 0) {
-                JOptionPane.showMessageDialog(vTablaPacientes, "¡Eh! Selecciona un registro de la tabla primero.");
-                return;
-            }
-
-            int idPaciente = Integer.parseInt(vTablaPacientes.getTblPacientes().getValueAt(fila, 0).toString());
-
-            if (vPaciente == null) {
-                JOptionPane.showMessageDialog(vTablaPacientes, "No hay datos cargados para actualizar.");
-                return;
-            }
-
-            String nom = vPaciente.getTxtNombre().getText().trim();
-            String ape = vPaciente.getTxtApellido().getText().trim();
-            String edadTexto = vPaciente.getTxtEdad().getText().trim();
-            String tel = vPaciente.getTxtTelefono().getText().trim();
-            String alergias = vPaciente.getTxtAlergias().getText().trim();
-            String tipoSangre = vPaciente.getTxtSangre().getText().trim();
-
-            if (nom.isEmpty() || ape.isEmpty() || edadTexto.isEmpty() || tel.isEmpty() || alergias.isEmpty() || tipoSangre.isEmpty()) {
-                JOptionPane.showMessageDialog(vPaciente, "Por favor llena todos los campos.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-
-            int edad = Integer.parseInt(edadTexto);
-            Paciente p = new Paciente(idPaciente, nom, ape, edad, tel, alergias, tipoSangre);
-
-            dao.actualizarPaciente(p);
-
-            vPaciente.getTxtNombre().setText("");
-            vPaciente.getTxtApellido().setText("");
-            vPaciente.getTxtEdad().setText("");
-            vPaciente.getTxtTelefono().setText("");
-            vPaciente.getTxtAlergias().setText("");
-            vPaciente.getTxtSangre().setText("");
-
-            JOptionPane.showMessageDialog(vPaciente, "Paciente actualizado: " + nom);
-            llenarTablaPacientes(); 
-
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(vPaciente, "Traviesillo. La edad debe ser un número entero.", "Error de formato", JOptionPane.WARNING_MESSAGE);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(vPaciente, "Error al actualizar: " + ex.getMessage());
         }
     }
 }

@@ -130,31 +130,6 @@ public class DAOHospital {
             return false;
         }
     }
-    
-    // Método para actualizar a los pacientes
-    public boolean actualizarPaciente(Paciente paciente) {
-        // CORREGIDO: tiposSangre a tipoSangre
-        String sql = "UPDATE Paciente SET nombre = ?, apellido = ?, edad = ?, telefono = ?, alergias = ?, tipoSangre = ? WHERE id_paciente = ?";
-        try (Connection con = DriverManager.getConnection(URL, USER, PASS);
-             PreparedStatement ps = con.prepareStatement(sql)) {
-            
-            ps.setString(1, paciente.getNombre());
-            ps.setString(2, paciente.getApellido());
-            ps.setInt(3, paciente.getEdad());
-            ps.setString(4, paciente.getTelefono());
-            ps.setString(5, paciente.getAlergias());
-            ps.setString(6, paciente.getTipoSangre());
-            ps.setInt(7, paciente.getId()); 
-            
-            ps.executeUpdate();
-            return true;
-            
-        } catch (SQLException e) {
-            System.err.println("¡Ups! Error al actualizar el paciente: " + e.getMessage());
-            return false;
-        }
-    }
-    
     public boolean verificarHorarioOcupado(int id_medico, String fecha, String hora) throws SQLException {
         String sql = "SELECT * FROM CitaMedica WHERE id_medico = ? AND fecha = ? AND hora = ?";
         try (Connection con = DriverManager.getConnection(URL, USER, PASS);

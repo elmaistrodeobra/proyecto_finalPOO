@@ -22,8 +22,7 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
         this.vMenu = vMenu;
     }
     public javax.swing.JTable getTblPacientes() { return tblPacientes; }
-    public javax.swing.JButton getBtnVolver() { return btnEliminarPa; }
-    public javax.swing.JButton getBtnActualizarPa() { return btnActualizarPa; }
+    public javax.swing.JButton getBtnVolver() { return btnVolver; }
     public javax.swing.JButton getBtnEliminarPa() {return btnEliminarPa;}
     
     /**
@@ -39,7 +38,6 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPacientes = new javax.swing.JTable();
         btnEliminarPa = new javax.swing.JButton();
-        btnActualizarPa = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,11 +68,6 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
         btnEliminarPa.setForeground(new java.awt.Color(0, 0, 102));
         btnEliminarPa.setText("Eliminar");
 
-        btnActualizarPa.setFont(new java.awt.Font("DynaPuff", 0, 12)); // NOI18N
-        btnActualizarPa.setForeground(new java.awt.Color(0, 0, 102));
-        btnActualizarPa.setText("Actualizar");
-        btnActualizarPa.addActionListener(this::btnActualizarPaActionPerformed);
-
         btnVolver.setText("Volver al menu");
         btnVolver.addActionListener(this::btnVolverActionPerformed);
 
@@ -95,13 +88,11 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnEliminarPa)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnActualizarPa)
-                        .addGap(226, 226, 226))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnVolver)
-                        .addGap(273, 273, 273))))
+                        .addGap(273, 273, 273))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnEliminarPa)
+                        .addGap(291, 291, 291))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,21 +101,15 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
                 .addComponent(lblListaPacientes)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliminarPa)
-                    .addComponent(btnActualizarPa))
                 .addGap(29, 29, 29)
+                .addComponent(btnEliminarPa)
+                .addGap(18, 18, 18)
                 .addComponent(btnVolver)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnActualizarPaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarPaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizarPaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
@@ -156,7 +141,6 @@ public class vistaTablaPacientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnActualizarPa;
     public javax.swing.JButton btnEliminarPa;
     public javax.swing.JButton btnVolver;
     public javax.swing.JScrollPane jScrollPane1;
