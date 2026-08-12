@@ -35,14 +35,12 @@ public class hospitalControl implements ActionListener {
         this.vMenu.getBtnVerCitas().addActionListener(this);
         this.vMenu.getBtnVerMedicos().addActionListener(this);
         this.vMenu.getBtnVerPacientes().addActionListener(this);
-        this.vTablaPacientes.getBtnEliminarPa().addActionListener(e -> eliminarPaciente());
-        this.vTablaPacientes.getBtnActualizarPa().addActionListener(e -> actualizarPaciente());
-        this.vTablaPacientes.getTblPacientes().getSelectionModel().addListSelectionListener(e -> seleccionarPaciente());
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object origen = e.getSource();
+        
         if (origen == vMenu.getBtnNuevaCita()) {
             if (vCita == null) {
                 vCita = new vistaCita();
@@ -97,7 +95,13 @@ public class hospitalControl implements ActionListener {
         else if (origen == vMenu.getBtnVerPacientes()) {
             if (vTablaPacientes == null) {
                 vTablaPacientes = new vistaTablaPacientes();
+                
+                // CORRECCIÓN 1: Se usa "this" para estandarizar el controlador
                 vTablaPacientes.getBtnVolver().addActionListener(this);
+
+                vTablaPacientes.getBtnEliminarPa().addActionListener(evt -> eliminarPaciente());
+                vTablaPacientes.getBtnActualizarPa().addActionListener(evt -> actualizarPaciente());
+                vTablaPacientes.getTblPacientes().getSelectionModel().addListSelectionListener(evt -> seleccionarPaciente());
             }
             llenarTablaPacientes();
             vTablaPacientes.setVisible(true);
@@ -124,6 +128,7 @@ public class hospitalControl implements ActionListener {
             vTablaMedicos.setVisible(false);
             vMenu.setVisible(true);
         }
+        // CORRECCIÓN 2: Faltaba esta validación para atrapar el clic de volver en pacientes
         else if (vTablaPacientes != null && origen == vTablaPacientes.getBtnVolver()) {
             vTablaPacientes.setVisible(false);
             vMenu.setVisible(true);
@@ -198,7 +203,8 @@ public class hospitalControl implements ActionListener {
             JOptionPane.showMessageDialog(vCita, "Error de BD: " + ex.getMessage());
         }
     }
-        private void llenarTablaMedicos() {
+
+    private void llenarTablaMedicos() {
         String[] columnas = {"ID", "Nombre", "Apellido", "Teléfono", "Cédula", "Especialidad", "Horario"};
         DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
 
@@ -233,9 +239,9 @@ public class hospitalControl implements ActionListener {
         } else {
             JOptionPane.showMessageDialog(vMedico, "Error al registrar médico.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-   }
-    //Parte de paciente!!
-  private void llenarTablaPacientes() {
+    }
+
+    private void llenarTablaPacientes() {
         String[] columnas = {"ID", "Nombre", "Apellido", "Edad", "Teléfono", "Alergias", "Tipo Sangre"};
         DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
 
@@ -253,6 +259,7 @@ public class hospitalControl implements ActionListener {
 
         vTablaPacientes.getTblPacientes().setModel(modelo);
     }
+
     private void procesarGuardarPaciente() {
         try {
             String nom = vPaciente.getTxtNombre().getText().trim();
@@ -292,9 +299,16 @@ public class hospitalControl implements ActionListener {
             JOptionPane.showMessageDialog(vPaciente, "La edad debe ser un número entero, traviesillo.", "Error de formato", JOptionPane.WARNING_MESSAGE);
         }
     }
+
     private void seleccionarPaciente() {
         int fila = vTablaPacientes.getTblPacientes().getSelectedRow();
         if (fila >= 0) {
+            if (vPaciente == null) {
+                vPaciente = new vistaPaciente();
+                vPaciente.getBtnGuardarpaciente().addActionListener(this);
+                vPaciente.getBtnVolver().addActionListener(this);
+            }
+            
             String nombre = vTablaPacientes.getTblPacientes().getValueAt(fila, 1).toString();
             String apellido = vTablaPacientes.getTblPacientes().getValueAt(fila, 2).toString();
             String edad = vTablaPacientes.getTblPacientes().getValueAt(fila, 3).toString();
@@ -328,13 +342,14 @@ public class hospitalControl implements ActionListener {
             if (confirmacion == JOptionPane.YES_OPTION) {
                 dao.eliminarPaciente(idPaciente); 
                 
-                // Limpiar los Campos!!
-                vPaciente.getTxtNombre().setText("");
-                vPaciente.getTxtApellido().setText("");
-                vPaciente.getTxtEdad().setText("");
-                vPaciente.getTxtTelefono().setText("");
-                vPaciente.getTxtAlergias().setText("");
-                vPaciente.getTxtSangre().setText("");
+                if (vPaciente != null) {
+                    vPaciente.getTxtNombre().setText("");
+                    vPaciente.getTxtApellido().setText("");
+                    vPaciente.getTxtEdad().setText("");
+                    vPaciente.getTxtTelefono().setText("");
+                    vPaciente.getTxtAlergias().setText("");
+                    vPaciente.getTxtSangre().setText("");
+                }
                 
                 JOptionPane.showMessageDialog(vTablaPacientes, "El paciente ha sido eliminado.");
                 llenarTablaPacientes(); 
@@ -354,7 +369,11 @@ public class hospitalControl implements ActionListener {
 
             int idPaciente = Integer.parseInt(vTablaPacientes.getTblPacientes().getValueAt(fila, 0).toString());
 
-            // Recuperar todos los datos ya modificados de la vista!
+            if (vPaciente == null) {
+                JOptionPane.showMessageDialog(vTablaPacientes, "No hay datos cargados para actualizar.");
+                return;
+            }
+
             String nom = vPaciente.getTxtNombre().getText().trim();
             String ape = vPaciente.getTxtApellido().getText().trim();
             String edadTexto = vPaciente.getTxtEdad().getText().trim();
@@ -372,7 +391,6 @@ public class hospitalControl implements ActionListener {
 
             dao.actualizarPaciente(p);
 
-            // Limpiar los datibiris
             vPaciente.getTxtNombre().setText("");
             vPaciente.getTxtApellido().setText("");
             vPaciente.getTxtEdad().setText("");

@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
- package pkg_modelo;
+package pkg_modelo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,12 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-/**
- *
- * @author uli08
- */
+
 public class DAOHospital {
-   
+    
     private final String URL = "jdbc:mysql://localhost:3306/hospital";
     private final String USER = "root";
     private final String PASS = "root";
@@ -76,7 +69,8 @@ public class DAOHospital {
             return false;
         }
     }
-    //Metodo para Consultar a los pacientes jiji
+    
+    // Método para Consultar a los pacientes
     public List<Paciente> consultarPacientes() {
         List<Paciente> lista = new ArrayList<>();
         String sql = "SELECT * FROM Paciente";
@@ -91,7 +85,7 @@ public class DAOHospital {
                     rs.getInt("edad"),
                     rs.getString("telefono"),
                     rs.getString("alergias"), 
-                    rs.getString("tiposSangre") 
+                    rs.getString("tipoSangre") // CORREGIDO: sin la 's'
                 );
                 lista.add(p);
             }
@@ -100,9 +94,11 @@ public class DAOHospital {
         }
         return lista;
     }
-    //Metodo para agregar a los pacientes!
+    
+    // Método para agregar a los pacientes
     public boolean registrarPaciente(Paciente paciente) {
-        String sql = "INSERT INTO Paciente (nombre, apellido, edad, telefono, alergias, tiposSangre) VALUES (?, ?, ?, ?, ?, ?)";
+        // CORREGIDO: tiposSangre a tipoSangre
+        String sql = "INSERT INTO Paciente (nombre, apellido, edad, telefono, alergias, tipoSangre) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection con = DriverManager.getConnection(URL, USER, PASS);
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, paciente.getNombre());
@@ -118,7 +114,8 @@ public class DAOHospital {
             return false;
         }
     }
-    //Metodo para eliminar a los pacientibiris
+    
+    // Método para eliminar a los pacientes
     public boolean eliminarPaciente(int idPaciente) {
         String sql = "DELETE FROM Paciente WHERE id_paciente = ?";
         try (Connection con = DriverManager.getConnection(URL, USER, PASS);
@@ -133,9 +130,11 @@ public class DAOHospital {
             return false;
         }
     }
-    //Metodo para actualizar a los pacientibiris
+    
+    // Método para actualizar a los pacientes
     public boolean actualizarPaciente(Paciente paciente) {
-        String sql = "UPDATE Paciente SET nombre = ?, apellido = ?, edad = ?, telefono = ?, alergias = ?, tiposSangre = ? WHERE id_paciente = ?";
+        // CORREGIDO: tiposSangre a tipoSangre
+        String sql = "UPDATE Paciente SET nombre = ?, apellido = ?, edad = ?, telefono = ?, alergias = ?, tipoSangre = ? WHERE id_paciente = ?";
         try (Connection con = DriverManager.getConnection(URL, USER, PASS);
              PreparedStatement ps = con.prepareStatement(sql)) {
             
@@ -145,7 +144,7 @@ public class DAOHospital {
             ps.setString(4, paciente.getTelefono());
             ps.setString(5, paciente.getAlergias());
             ps.setString(6, paciente.getTipoSangre());
-            ps.setInt(7, paciente.getId()); // Usamos el ID para saber exactamente a quién actualizar
+            ps.setInt(7, paciente.getId()); 
             
             ps.executeUpdate();
             return true;
@@ -184,12 +183,13 @@ public class DAOHospital {
     
     public ArrayList<Cita> obtenerTodasLasCitas() throws SQLException {
         ArrayList<Cita> lista = new ArrayList<>();
+        // ACTUALIZADO: Para que traiga los 7 campos del paciente incluyendo edad, alergias y sangre
         String sql = "SELECT c.id_cita, c.fecha, c.hora, c.diagnostico, "
-                   + "p.id_paciente, p.nombre AS p_nom, p.apellido AS p_ape, p.telefono AS p_tel, "
+                   + "p.id_paciente, p.nombre AS p_nom, p.apellido AS p_ape, p.edad AS p_eda, p.telefono AS p_tel, p.alergias AS p_ale, p.tipoSangre AS p_san, "
                    + "m.id_medico, m.nombre AS m_nom, m.apellido AS m_ape, m.telefono AS m_tel, m.cedula, m.especialidad, m.horario "
-                   + "FROM citamedica c "
-                   + "INNER JOIN paciente p ON c.id_paciente = p.id_paciente "
-                   + "INNER JOIN medico m ON c.id_medico = m.id_medico";
+                   + "FROM CitaMedica c "
+                   + "INNER JOIN Paciente p ON c.id_paciente = p.id_paciente "
+                   + "INNER JOIN Medico m ON c.id_medico = m.id_medico";
         try (Connection con = DriverManager.getConnection(URL, USER, PASS);
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
@@ -198,8 +198,10 @@ public class DAOHospital {
                     rs.getInt("id_paciente"),
                     rs.getString("p_nom"),
                     rs.getString("p_ape"),
-                    0,
-                    rs.getString("p_tel")
+                    rs.getInt("p_eda"),
+                    rs.getString("p_tel"),
+                    rs.getString("p_ale"),
+                    rs.getString("p_san")
                 );
                 Medico med = new Medico(
                     rs.getInt("id_medico"),
@@ -226,6 +228,4 @@ public class DAOHospital {
             return ps.executeUpdate() > 0;
         }
     }
-} 
-    
-
+}
