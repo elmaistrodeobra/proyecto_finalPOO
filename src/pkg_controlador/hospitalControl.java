@@ -194,4 +194,40 @@ public class hospitalControl implements ActionListener {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(vCita, "Error de BD: " + ex.getMessage());
         }
+        private void llenarTablaMedicos() {
+        String[] columnas = {"ID", "Nombre", "Apellido", "Teléfono", "Cédula", "Especialidad", "Horario"};
+        DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+
+        for (Medico m : dao.consultarMedicos()) {
+            modelo.addRow(new Object[]{
+                m.getId(),
+                m.getNombre(),
+                m.getApellido(),
+                m.getTelefono(),
+                m.getCedula(),
+                m.getEspecialidad(),
+                m.getHorario()
+            });
+        }
+
+        vTablaMedicos.getTblMedicos().setModel(modelo);
+    }
+
+    private void procesarGuardarMedico() {
+        String nom = vMedico.getTxtNombre().getText();
+        String ape = vMedico.getTxtApellido().getText();
+        String tel = vMedico.getTxtTelefono().getText();
+        String ced = vMedico.getTxtCedula().getText();
+        String esp = vMedico.getTxtEspecialidad().getText();
+        String hor = vMedico.getTxtHorario().getText();
+
+        Medico m = new Medico(0, nom, ape, 0, tel, ced, esp, hor);
+        if (dao.registrarMedico(m)) {
+            JOptionPane.showMessageDialog(vMedico, "Médico registrado con éxito.");
+            vMedico.setVisible(false);
+            vMenu.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(vMedico, "Error al registrar médico.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     }
