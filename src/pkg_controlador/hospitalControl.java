@@ -388,5 +388,5 @@ public class hospitalControl implements ActionListener {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(vPaciente, "Error al actualizar: " + ex.getMessage());
         }
-    }  
+    }
 }

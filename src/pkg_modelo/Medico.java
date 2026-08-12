@@ -22,7 +22,7 @@ public class Medico extends Persona {
     }
 
     public String mostrarPerfil() {
-        return "Dr. " + nombre + " " + apellido + " - " + especialidad;
+        return "DrM. " + nombre + " " + apellido + " - " + especialidad;
     }
     
     @Override
