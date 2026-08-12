@@ -8,6 +8,8 @@ package pkg_modelo;
  *
  * @author uli08
  */
-public class HorarioOcupadoException {
-    
+public class HorarioOcupadoException extends Exception {
+    public HorarioOcupadoException(String mensaje) {
+        super(mensaje);
+    }
 }
