@@ -37,7 +37,7 @@ public class vistaMedico extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
-        btnVolver = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
@@ -65,7 +65,7 @@ public class vistaMedico extends javax.swing.JFrame {
 
         btnGuardar.setText("GUARDAR");
 
-        btnVolver.setText("VOLVER");
+        jButton2.setText("VOLVER");
 
         txtNombre.addActionListener(this::txtNombreActionPerformed);
 
@@ -113,7 +113,7 @@ public class vistaMedico extends javax.swing.JFrame {
                 .addGap(79, 79, 79)
                 .addComponent(btnGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVolver)
+                .addComponent(jButton2)
                 .addGap(119, 119, 119))
         );
         layout.setVerticalGroup(
@@ -124,7 +124,7 @@ public class vistaMedico extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -148,8 +148,8 @@ public class vistaMedico extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
-                    .addComponent(btnVolver))
-                .addContainerGap(83, Short.MAX_VALUE))
+                    .addComponent(jButton2))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
@@ -193,22 +193,22 @@ public class vistaMedico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnGuardar;
-    public javax.swing.JButton btnVolver;
-    public javax.swing.JLabel jLabel1;
-    public javax.swing.JLabel jLabel2;
-    public javax.swing.JLabel jLabel3;
-    public javax.swing.JLabel jLabel4;
-    public javax.swing.JLabel jLabel5;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    public javax.swing.JLabel jLabel7;
-    public javax.swing.JLabel jLabel8;
-    public javax.swing.JTextField txtApellido;
-    public javax.swing.JTextField txtCedula;
-    public javax.swing.JTextField txtEspecialidad;
-    public javax.swing.JTextField txtHorario;
-    public javax.swing.JTextField txtNombre;
-    public javax.swing.JTextField txtTelefono;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtEspecialidad;
+    private javax.swing.JTextField txtHorario;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 public javax.swing.JTextField getTxtNombre() {
     return txtNombre;
@@ -239,7 +239,7 @@ public javax.swing.JButton getBtnGuardar() {
 }
 
 public javax.swing.JButton getBtnVolver() {
-    return btnVolver;
+    return jButton2;
 }
 
 }
